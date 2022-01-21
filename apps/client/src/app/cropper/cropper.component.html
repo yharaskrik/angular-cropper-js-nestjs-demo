@@ -1,0 +1,6 @@
+<div style="border: black">
+  <img #cropper id="cropper" crossorigin="anonymous" />
+</div>
+<button (click)="cropImage()">Crop</button>
+<div>Loading: {{ loading$ | async }}</div>
+<div>{{ percentageSent$ | async }} / 100</div>

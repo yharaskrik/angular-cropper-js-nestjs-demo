@@ -1,15 +1,22 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpStatus,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
 
-import { Message } from '@cropper-test/api-interfaces';
-
-import { AppService } from './app.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Post('file')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
+    return HttpStatus.OK;
   }
 }
