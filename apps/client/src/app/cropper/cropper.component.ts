@@ -30,7 +30,8 @@ export class CropperComponent implements AfterViewInit {
 
   private cropper?: Cropper;
 
-  private _image?: string;
+  private _image =
+    'https://d3v39pnya2398h.cloudfront.net/eyJidWNrZXQiOiJ0cmVsbGlzLWRldi1pbWFnZXMiLCJrZXkiOiJieFNZTGhjdlJQLXBob3RvLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NTAwLCJoZWlnaHQiOm51bGwsImZpdCI6ImNvbnRhaW4ifX19';
 
   constructor(private cropperStore: CropperStore) {}
 

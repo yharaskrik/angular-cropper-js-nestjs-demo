@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { CropperModule } from './cropper/cropper.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -12,7 +13,8 @@ import { CropperModule } from './cropper/cropper.module';
     BrowserModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    CropperModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
