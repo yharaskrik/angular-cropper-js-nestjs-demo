@@ -1,1 +1,4 @@
 <button (click)="openCropper()">Open Cropper</button>
+<div *ngIf="id$ | async as id">
+  <img src="http://localhost:3333/file/{{ id }}" />
+</div>

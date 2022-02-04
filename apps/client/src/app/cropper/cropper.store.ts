@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { concatMap, Observable, tap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface CropperState {
   loading: boolean;
@@ -19,7 +20,7 @@ export class CropperStore extends ComponentStore<CropperState> {
 
   readonly loading$ = this.select((state) => state.loading);
 
-  constructor(private _httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient, private _matDialog: MatDialog) {
     super({ loading: false, loaded: 0, total: 0 });
   }
 
@@ -46,6 +47,11 @@ export class CropperStore extends ComponentStore<CropperState> {
                 });
               } else if (e.type === HttpEventType.Sent) {
                 this.patchState({ loading: false });
+              } else if (e.type === HttpEventType.Response) {
+                const body = e.body as { id: string };
+                this._matDialog
+                  .getDialogById('cropper')
+                  ?.close({ id: body.id });
               }
             })
           );
